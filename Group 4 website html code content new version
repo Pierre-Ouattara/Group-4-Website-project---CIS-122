@@ -79,7 +79,7 @@
     </section>
     <section id="adam">
         <h2>About Adam</h2>
-        <p>Adam's content will go here.</p>
+        <p>Hello, my name is Adam Kibitok. I'm a transfer student and my degree is MIS. My hobbies include listeing to and making music, playing video games, and spending time with friends and family.</p>
         <div class="profile-photo">
             <img id="adamPhoto" src="images/default-profile.png" alt="Adam's Profile Photo">
         </div>
