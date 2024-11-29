@@ -30,15 +30,30 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    document.getElementById(imageId).src = e.target.result;
+                    const imageUrl = e.target.result;
+                    document.getElementById(imageId).src = imageUrl;
+                    // Save the image to localStorage
+                    localStorage.setItem(imageId, imageUrl);
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        // Show the Home section by default
+        // Load images from localStorage if available
+        function loadSavedImages() {
+            const pierreImage = localStorage.getItem('pierrePhoto');
+            const rebkaImage = localStorage.getItem('rebkaPhoto');
+            const adamImage = localStorage.getItem('adamPhoto');
+            
+            if (pierreImage) document.getElementById('pierrePhoto').src = pierreImage;
+            if (rebkaImage) document.getElementById('rebkaPhoto').src = rebkaImage;
+            if (adamImage) document.getElementById('adamPhoto').src = adamImage;
+        }
+
+        // Show the Home section by default and load saved images
         window.onload = () => {
             showSection('home');
+            loadSavedImages();
         };
     </script>
 </head>
@@ -81,7 +96,7 @@
         <h2>About Adam</h2>
         <p>Hello, my name is Adam Kibitok. I'm a transfer student and my degree is MIS. My hobbies include listeing to and making music, playing video games, and spending time with friends and family.</p>
         <div class="profile-photo">
-            <img id="adamPhoto" src="images/adam_headshot.png" alt="Adam's Profile Photo">
+            <img id="adamPhoto" src="Group-4-Website-project---CIS-122/adam_headshot.png" alt="Adam's Profile Photo">
         </div>
         <input type="file" accept="image/*" onchange="handleImageUpload(event, 'adamPhoto')">
     </section>
