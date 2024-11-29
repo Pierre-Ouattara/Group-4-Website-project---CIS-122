@@ -81,7 +81,7 @@
         <h2>About Adam</h2>
         <p>Hello, my name is Adam Kibitok. I'm a transfer student and my degree is MIS. My hobbies include listeing to and making music, playing video games, and spending time with friends and family.</p>
         <div class="profile-photo">
-            <img id="adamPhoto" src="Group-4-Website-project---CIS-122/adam_headshot.png" alt="Adam's Profile Photo">
+            <img id="adamPhoto" src="images/adam_headshot.png" alt="Adam's Profile Photo">
         </div>
         <input type="file" accept="image/*" onchange="handleImageUpload(event, 'adamPhoto')">
     </section>
