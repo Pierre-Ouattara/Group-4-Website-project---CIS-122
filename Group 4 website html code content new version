@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Website</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #0073e6; color: white; padding: 20px; text-align: center; }
+        nav { display: flex; justify-content: center; background: #333; }
+        nav a { color: white; padding: 10px 20px; text-decoration: none; cursor: pointer; }
+        nav a:hover { background: #555; }
+        section { padding: 20px; display: none; }
+        section.active { display: block; }
+        .profile-photo { margin: 20px 0; }
+        .profile-photo img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function handleImageUpload(event, imageId) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(imageId).src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Show the Home section by default
+        window.onload = () => {
+            showSection('home');
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <img src="images/teamlogo.png" alt="Team Logo" style="height: 50px;">
+        <h1>Team Name</h1>
+    </header>
+    <nav>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('pierre')">Pierre O</a>
+        <a onclick="showSection('rebka')">Rebka G</a>
+        <a onclick="showSection('adam')">Adam K</a>
+    </nav>
+    <section id="home" class="active">
+        <h2>About Us</h2>
+        <p>Welcome to our team webpage! We are Team 4.</p>
+        <p>Contact us: 
+            <a href="mailto:akibitok104@gmail.com">akibitok104@gmail.com</a>, 
+            <a href="mailto:pierremaix123@gmail.com">pierremaix123@gmail.com</a>
+        </p>
+    </section>
+    <section id="pierre">
+        <h2>About Pierre</h2>
+        <p>My name is Pierre Ouattara. I am a graduate student in my first year in data science, but my undergraduate degree was in mechanical engineering. My hobbies are playing the guitar, learning new things, and video editing.</p>
+        <div class="profile-photo">
+            <img id="pierrePhoto" src="images/default-profile.png" alt="Pierre's Profile Photo">
+        </div>
+        <input type="file" accept="image/*" onchange="handleImageUpload(event, 'pierrePhoto')">
+    </section>
+    <section id="rebka">
+        <h2>About Rebka</h2>
+        <p>Rebka's content will go here.</p>
+        <div class="profile-photo">
+            <img id="rebkaPhoto" src="images/default-profile.png" alt="Rebka's Profile Photo">
+        </div>
+        <input type="file" accept="image/*" onchange="handleImageUpload(event, 'rebkaPhoto')">
+    </section>
+    <section id="adam">
+        <h2>About Adam</h2>
+        <p>Adam's content will go here.</p>
+        <div class="profile-photo">
+            <img id="adamPhoto" src="images/default-profile.png" alt="Adam's Profile Photo">
+        </div>
+        <input type="file" accept="image/*" onchange="handleImageUpload(event, 'adamPhoto')">
+    </section>
+</body>
+</html>
